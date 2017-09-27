@@ -26,12 +26,13 @@ function handleStartButton() {
 // Get data from Battuta API for State and Cities
 function getStateCityData() {
     // init side navbar
-    // init side navbar
     $(".button-collapse").sideNav();
     let html = `<div id="slide-out" class="side-nav fixed">
                     <div class="container">
                         <div class="row">
                             <form id="locatonSearch"></form>
+                                <h3>Find Your Trail</h3>
+                                <h4>Select a Location:</h4>
                                 <div class="input-field">
                                     <select id="items">
                                         <option value="" disabled selected>Choose a state</option>
@@ -102,6 +103,7 @@ function getDataFromTrails(latitude, longitude, callback) {
         success: callback
     };
     $.ajax(settings);
+    // if results are null or failure,  do some code to render an error screen
 }
 // Initialize map
 var map;
@@ -126,7 +128,7 @@ function displayTrailSearchData(data) {
         bounds.extend(position);
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             return function () {
-                infowindow.setContent('<h3>' + arr[i].name + '</h3><h4>' + arr[i].directions + '</h4>');
+                infowindow.setContent('<h3>' + arr[i].name + '</h3><h4>' + arr[i].directions+ '</h4>');
                 infowindow.open(map, marker);
             }
         })(marker, i));  
