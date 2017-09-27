@@ -1,47 +1,90 @@
 // get data for drowdown menus from Battuta API
 var countryCode = "us";
-var BATTUTA_KEY = "1b568dfcb5d096e0c78327fb27f6e590";
+var BATTUTA_KEY = "20d543e656b7fe6818101f7fefa26d66";
 url = "https://battuta.medunes.net/api/region/" + countryCode + "/all/?key=" + BATTUTA_KEY + "&callback=?";
 
+function startPage() {
+	let html = 
+			`<div id="startPage">
+            <h2>Find Your Trail<h2><br>
+            <h3>Search any US city for nearby trails and go on your next adventure!</h3>
+			<form id ="startButton">
+			<button class="btn btn-lg btn-default" type="submit">Let's go!</button>
+			</form>
+			</div>`
 
+	$("#trailPage").html(html);
+}
 
-$(".button-collapse").sideNav();
-$.getJSON(url, function (states) {
-    var option = '';
-    for (var i = 0; i < states.length; i++) {
-        option += '<option value="' + states[i].region + '">' + states[i].region + '</option>';
-    }
-    $('#items').append(option);
+function handleStartButton() {
+	$("#trailPage").on("submit", "#startButton", function(e) {
+	 	e.preventDefault();
+	 	getStateCityData();
+	});
+}
 
-    $(document).ready(function() {
-        $('select').material_select();
-      });
-});
-
-
-
-$('#items').on('change', function () {
-    var region = this.value;
-    url = "https://battuta.medunes.net/api/city/" + countryCode + "/search/?region=" + region + "&key=" + BATTUTA_KEY + "&callback=?";
-    $.getJSON(url, function (city) {
+// Get data from Battuta API for State and Cities
+function getStateCityData() {
+    // init side navbar
+    // init side navbar
+    $(".button-collapse").sideNav();
+    let html = `<div id="slide-out" class="side-nav fixed">
+                    <div class="container">
+                        <div class="row">
+                            <form id="locatonSearch"></form>
+                                <div class="input-field">
+                                    <select id="items">
+                                        <option value="" disabled selected>Choose a state</option>
+                                    </select>
+                                </div>
+                                <div class="input-field">
+                                    <select id="cities">
+                                        <option value="" disabled selected>Choose a city</option>
+                                    </select>
+                                </div>
+                            </form> 
+                        </div>
+                    </div>  
+                </div>
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+                <div id="map"></div>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5BRSSgrgK8EJ8998mi5CclUx2vjH7Tc0&callback=initialize"
+                ></script>`;
+    $("#trailPage").html(html);
+    $.getJSON(url, function (states) {
         var option = '';
-        $("#cities option").remove();
-        for (var i = 0; i < city.length; i++) {
-            option += '<option data-latitude="' + city[i].latitude + '" data-longitude="' + city[i].longitude + '">' + city[i].city + '</option>';
+        for (var i = 0; i < states.length; i++) {
+            option += '<option value="' + states[i].region + '">' + states[i].region + '</option>';
         }
-        $('#cities').append(option);
+        $('#items').append(option);
         $(document).ready(function() {
-            $('select').material_select();
-          });
+            $('select').material_select(); 
+        });
     });
-})
 
-$("#cities").on('change', function () {
-    var latitude = $(this).find(':selected').data('latitude');
-    var longitude = $(this).find(':selected').data('longitude');
-    getDataFromTrails(latitude, longitude, displayTrailSearchData);
-});
-
+    $('#items').on('change', function () {
+        var region = this.value;
+        url = "https://battuta.medunes.net/api/city/" + countryCode + "/search/?region=" + region + "&key=" + BATTUTA_KEY + "&callback=?";
+        $.getJSON(url, function (city) {
+            var option = '';
+            $("#cities option").remove();
+            for (var i = 0; i < city.length; i++) {
+                option += '<option data-latitude="' + city[i].latitude + '" data-longitude="' + city[i].longitude + '">' + city[i].city + '</option>';
+            }
+            $('#cities').append(option);
+            $(document).ready(function() {
+                $('select').material_select();
+            });
+        });
+    });
+    // get Latitude and Longitude from selected city
+    $("#cities").on('change', function () {
+        var latitude = $(this).find(':selected').data('latitude');
+        var longitude = $(this).find(':selected').data('longitude');
+        getDataFromTrails(latitude, longitude, displayTrailSearchData);
+    });
+}
+// Pass Latitude and Longitude from selected city to get data from TrailsAPI
 function getDataFromTrails(latitude, longitude, callback) {
     const settings = {
         url: 'https://trailapi-trailapi.p.mashape.com/',
@@ -60,7 +103,7 @@ function getDataFromTrails(latitude, longitude, callback) {
     };
     $.ajax(settings);
 }
-
+// Initialize map
 var map;
 var markers = [];
 function initialize() {
@@ -69,10 +112,9 @@ function initialize() {
         zoom: 8
     });
 }
-
+// Pass Latitude and Longitude into Google Maps API to render map, markers, and info windows.
 function displayTrailSearchData(data) {
     var arr = data.places
-   
     var bounds = new google.maps.LatLngBounds();
     for (var i = 0; i < arr.length; i++) {
         position = new google.maps.LatLng(arr[i].lat, arr[i].lon);
@@ -87,18 +129,16 @@ function displayTrailSearchData(data) {
                 infowindow.setContent('<h3>' + arr[i].name + '</h3><h4>' + arr[i].directions + '</h4>');
                 infowindow.open(map, marker);
             }
-        })(marker, i));
-        
+        })(marker, i));  
     }
     function deleteMarkers() {
         clearMarkers();
         markers = [];
-      }
-
+    }
     map.fitBounds(bounds);
     var infowindow = new google.maps.InfoWindow();
     var marker, i;
-
 }
 
-
+startPage();
+handleStartButton();
