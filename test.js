@@ -23,47 +23,43 @@ function handleStartButton() {
 	});
 }
 
+
 // Get data from Battuta API for State and Cities
 function getStateCityData() {
-    // init side navbar
-    $(".button-collapse").sideNav();
-    let html = `<div id="slide-out" class="side-nav fixed">
-                    <div class="container">
-                        <div class="row">
-                            <form id="locatonSearch"></form>
-                                <h3>Find Your Trail</h3>
-                                <h4>Select a Location:</h4>
-                                <div class="input-field">
-                                    <select id="items">
-                                        <option value="" disabled selected>Choose a state</option>
-                                    </select>
-                                </div>
-                                <div class="input-field">
-                                    <select id="cities">
-                                        <option value="" disabled selected>Choose a city</option>
-                                    </select>
-                                </div>
-                            </form> 
-                        </div>
-                    </div>  
-                </div>
-                <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-                <div id="map"></div>
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5BRSSgrgK8EJ8998mi5CclUx2vjH7Tc0&callback=initialize"
-                ></script>`;
+    //openNav();
+    let html = `
+    <div id="main" class="container">
+        <div id="mySidenav" class="sidenav">
+            <h2>Find My Trail</h2>
+            <h4>Select a State and a City:</h4>
+            <div id="selectMenu">
+                <select id="items">
+                    <option>Choose a State</option>
+                </select>
+                <select id="cities">
+                    <option>Choose a City</option>
+                </select>
+            </div>
+        </div>
+        <div id="map"></div>
+            <script 
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5BRSSgrgK8EJ8998mi5CclUx2vjH7Tc0&callback=initialize">
+            </script>
+        </div>
+    </div>`
+
     $("#trailPage").html(html);
+
     $.getJSON(url, function (states) {
         var option = '';
         for (var i = 0; i < states.length; i++) {
             option += '<option value="' + states[i].region + '">' + states[i].region + '</option>';
         }
         $('#items').append(option);
-        $(document).ready(function() {
-            $('select').material_select(); 
-        });
     });
 
     $('#items').on('change', function () {
+        document.getElementById('cities').style.display='block';
         var region = this.value;
         url = "https://battuta.medunes.net/api/city/" + countryCode + "/search/?region=" + region + "&key=" + BATTUTA_KEY + "&callback=?";
         $.getJSON(url, function (city) {
@@ -72,10 +68,8 @@ function getStateCityData() {
             for (var i = 0; i < city.length; i++) {
                 option += '<option data-latitude="' + city[i].latitude + '" data-longitude="' + city[i].longitude + '">' + city[i].city + '</option>';
             }
+            
             $('#cities').append(option);
-            $(document).ready(function() {
-                $('select').material_select();
-            });
         });
     });
     // get Latitude and Longitude from selected city
@@ -128,7 +122,7 @@ function displayTrailSearchData(data) {
         bounds.extend(position);
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             return function () {
-                infowindow.setContent('<h3>' + arr[i].name + '</h3><h4>' + arr[i].directions+ '</h4>');
+                infowindow.setContent('<h4>' + arr[i].name + '</h4><p>' + arr[i].directions+ '</p>');
                 infowindow.open(map, marker);
             }
         })(marker, i));  
@@ -141,6 +135,7 @@ function displayTrailSearchData(data) {
     var infowindow = new google.maps.InfoWindow();
     var marker, i;
 }
+
 
 startPage();
 handleStartButton();
