@@ -6,11 +6,11 @@ url = "https://battuta.medunes.net/api/region/" + countryCode + "/all/?key=" + B
 function startPage() {
 	let html = 
 			`<div id="startPage" class="container">
-            <h2>Find Your Trail<h2><br>
-            <h3>Search any US city for nearby trails and go on your next adventure!</h3>
-			<form id ="startButton">
-			<button class="btn btn-lg btn-default" type="submit">Let's go!</button>
-			</form>
+                <h2>Find Your Trail<h2><br>
+                <h3>Search any US city for nearby trails and go on your next adventure!</h3>
+                <form id ="startButton">
+                    <button class="btn btn-lg btn-default" type="submit">Let's go!</button>
+                </form>
 			</div>`
 
 	$("#trailPage").html(html);
@@ -36,8 +36,6 @@ function openNav() {
 // Get data from Battuta API for State and Cities
 function getStateCityData() {
     //openNav();
-    
-
     let html = 
            ` <div class="topnav">
                 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
@@ -45,16 +43,16 @@ function getStateCityData() {
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <h2>Find My Trail</h2>
-                    <h4>Select a State and a City:</h4>
+                    <h4>Select a State and City:</h4>
                     <div id="selectMenu">
                         <select id="items">
                             <option>Choose a State</option>
                         </select>
-                    <select id="cities">
-                        <option>Choose a City</option>
-                    </select>
+                        <select id="cities">
+                            <option>Choose a City</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
             <div id="main">
                 <div id="map"></div>
                     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
@@ -99,15 +97,6 @@ function getStateCityData() {
     });
 }
 
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("map").style.marginLeft = "0";
-}
-
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("map").style.marginLeft = "250px";
-}
 // Pass Latitude and Longitude from selected city to get data from TrailsAPI
 function getDataFromTrails(latitude, longitude, callback) {
     const settings = {
