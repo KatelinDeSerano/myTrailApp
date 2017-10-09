@@ -1,3 +1,53 @@
+#startPage {
+    height: 100vh;
+    width: 100vw;
+    background: url("hikingshoes.jpg") no-repeat center fixed;
+    background-size: cover; 
+    color: white;
+}
+
+.textbox {
+    padding: 3rem;
+    border: 3px solid white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+
+.textbox h2 {
+    font-family: 'Francois One', sans-serif;
+    font-size: 50px; 
+}
+
+.textbox h3 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 40px;
+}
+
+.button {
+    background-color: transparent; 
+    border: none;
+    padding-top: 5px;
+    color: white; 
+    text-align: center;
+    width: 100%;
+    font-size: 24px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    
+}
+
+.button:hover {
+   font-size: 150%;
+}
+
+
+
+
 #map {
     position: absolute;
     top: 5rem;
@@ -39,7 +89,6 @@
   .sidenav a {font-size: 18px;}
 }
 
-
 #items{
     display: inline-block;
     margin-top: 10px;
@@ -54,11 +103,6 @@
     margin-left: 3rem;
     margin-right: 15px;
     width: 12em;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
 }
 
 .sidenav .closebtn {

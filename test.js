@@ -5,13 +5,15 @@ url = "https://battuta.medunes.net/api/region/" + countryCode + "/all/?key=" + B
 
 function startPage() {
 	let html = 
-			`<div id="startPage" class="container">
-                <h2>Find Your Trail<h2><br>
-                <h3>Search any US city for nearby trails and go on your next adventure!</h3>
+            `<div id="startPage">
+            <div class="textbox container-fluid">
+                <h2>GET YOUR FIX. DISCOVER ADVENTURE.<h2>
+                <h3>Use the TrailFix app to search any US city for nearby trails!</h3>
                 <form id ="startButton">
-                    <button class="btn btn-lg btn-default" type="submit">Let's go!</button>
+                    <button class="button" type="submit">GET GOING <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
                 </form>
-			</div>`
+            </div>
+                </div>`
 
 	$("#trailPage").html(html);
 }
