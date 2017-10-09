@@ -5,7 +5,7 @@ url = "https://battuta.medunes.net/api/region/" + countryCode + "/all/?key=" + B
 
 function startPage() {
 	let html = 
-			`<div id="startPage">
+			`<div id="startPage" class="container">
             <h2>Find Your Trail<h2><br>
             <h3>Search any US city for nearby trails and go on your next adventure!</h3>
 			<form id ="startButton">
@@ -23,32 +23,51 @@ function handleStartButton() {
 	});
 }
 
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("map").style.marginLeft = "0";
+}
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("map").style.marginLeft = "250px";
+}
 
 // Get data from Battuta API for State and Cities
 function getStateCityData() {
     //openNav();
-    let html = `
-    <div id="main" class="container">
-        <div id="mySidenav" class="sidenav">
-            <h2>Find My Trail</h2>
-            <h4>Select a State and a City:</h4>
-            <div id="selectMenu">
-                <select id="items">
-                    <option>Choose a State</option>
-                </select>
-                <select id="cities">
-                    <option>Choose a City</option>
-                </select>
-            </div>
-        </div>
-        <div id="map"></div>
-            <script 
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5BRSSgrgK8EJ8998mi5CclUx2vjH7Tc0&callback=initialize">
-            </script>
-        </div>
-    </div>`
+    
 
+    let html = 
+           ` <div class="topnav">
+                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+            </div>
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <h2>Find My Trail</h2>
+                    <h4>Select a State and a City:</h4>
+                    <div id="selectMenu">
+                        <select id="items">
+                            <option>Choose a State</option>
+                        </select>
+                    <select id="cities">
+                        <option>Choose a City</option>
+                    </select>
+                </div>
+            </div>
+            <div id="main">
+                <div id="map"></div>
+                    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+                        <script 
+                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5BRSSgrgK8EJ8998mi5CclUx2vjH7Tc0&callback=initialize">
+                        </script>
+                </div>
+            </div>
+            `
+          
     $("#trailPage").html(html);
+   
+   
 
     $.getJSON(url, function (states) {
         var option = '';
@@ -78,6 +97,16 @@ function getStateCityData() {
         var longitude = $(this).find(':selected').data('longitude');
         getDataFromTrails(latitude, longitude, displayTrailSearchData);
     });
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("map").style.marginLeft = "0";
+}
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("map").style.marginLeft = "250px";
 }
 // Pass Latitude and Longitude from selected city to get data from TrailsAPI
 function getDataFromTrails(latitude, longitude, callback) {
