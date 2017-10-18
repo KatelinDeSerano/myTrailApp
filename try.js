@@ -25,35 +25,36 @@ function handleStartButton() {
 	});
 }
 
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("map").style.marginLeft = "0";
+}
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("map").style.marginLeft = "250px";
+}
+
 // Get data from Battuta API for State and Cities
 function getStateCityData() {
     //openNav();
     let html = 
-           ` <div id="search" class="container-fluid">
-                    <h2>My TrailFix</h2>
-                    <div class="row">
-                    <div class="col-md-4">
-                    <h4>Select a State and City:</h4>
-                    </div>
-                    <div class="col-md-4">
-                        <select class="selectpicker" id="items" >
-                            <option>Choose a State</option>
-                        </select>
-                        </div>
-                        <div  class="col-md-4">
-                        <select id="cities">
-                            <option>Choose a City</option>
-                        </select>
-                        </div>
-                    </div>
-                    </div>
-                
-                <div id="map" class="col-md-12"></div>
-                        <script 
-                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5BRSSgrgK8EJ8998mi5CclUx2vjH7Tc0&callback=initialize">
-                        </script>
-                
-            
+           `
+           <div class="page-container">
+           <div class="container">
+               <br />
+               <button class="btn launch-map">Launch Map</button>
+           </div>
+       </div>
+       <div id="modal" class="modal hide fade">
+           <div class="modal-body">
+               <div id="map-canvas"></div>
+           </div>
+           <div class="modal-footer">
+               <button type="button" data-dismiss="modal" class="btn btn-primary" data-value="1">Continue</button>
+               <button type="button" data-dismiss="modal" class="btn" data-value="0">Cancel</button>
+           </div>
+       </div>
             `
           
     $("#trailPage").html(html);
@@ -113,12 +114,26 @@ function getDataFromTrails(latitude, longitude, callback) {
 // Initialize map
 var map;
 var markers = [];
-function initialize() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 8
+$('.launch-map').on('click', function () {
+    console.log("launched");
+    $('#modal').modal({
+        backdrop: 'static',
+        keyboard: false
+    }).on('shown.bs.modal', function () {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 8
+        });
     });
-}
+});
+
+
+// function initialize() {
+//     map = new google.maps.Map(document.getElementById('map'), {
+//         center: { lat: -34.397, lng: 150.644 },
+//         zoom: 8
+//     });
+// }
 // Pass Latitude and Longitude into Google Maps API to render map, markers, and info windows.
 function displayTrailSearchData(data) {
     var arr = data.places
