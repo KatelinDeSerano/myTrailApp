@@ -4,8 +4,8 @@ var BATTUTA_KEY = "20d543e656b7fe6818101f7fefa26d66";
 url = "https://battuta.medunes.net/api/region/" + countryCode + "/all/?key=" + BATTUTA_KEY + "&callback=?";
 
 function startPage() {
-	let html = 
-            `<div id="startPage">
+	let html = `
+            <div id="startPage">
             <div class="textbox container-fluid">
                 <h2>GET YOUR FIX. DISCOVER ADVENTURE.<h2>
                 <h3>Use the TrailFix app to search any US city for nearby trails!</h3>
@@ -28,37 +28,28 @@ function handleStartButton() {
 // Get data from Battuta API for State and Cities
 function getStateCityData() {
     //openNav();
-    let html = 
-           ` <div id="search" class="container-fluid">
-                    <h2>My TrailFix</h2>
-                    <div class="row">
-                    <div class="col-md-4">
-                    <h4>Select a State and City:</h4>
-                    </div>
-                    <div class="col-md-4">
-                        <select class="selectpicker" id="items" >
-                            <option>Choose a State</option>
-                        </select>
-                        </div>
-                        <div  class="col-md-4">
-                        <select id="cities">
-                            <option>Choose a City</option>
-                        </select>
-                        </div>
-                    </div>
-                    </div>
-                
-                <div id="map" class="col-md-12"></div>
-                        <script 
-                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5BRSSgrgK8EJ8998mi5CclUx2vjH7Tc0&callback=initialize">
-                        </script>
-                
-            
-            `
+    let html = `
+           <nav class="navbar navbar-inverse navbar-fixed-top">
+           <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">TrailFix</a>
+            </div>
+            <p class="navbar-text">Select a City and a State: </p>
+            <form class="navbar-form navbar-left">
+                <select id="items" >
+                    <option>Choose a State</option>
+                </select>  
+                <select id="cities">
+                    <option>Choose a City</option>
+                </select>
+            </form>
+            </div>
+            <div id="map" class="col-md-12"></div>
+                <script 
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5BRSSgrgK8EJ8998mi5CclUx2vjH7Tc0&callback=initialize">
+                </script>`
           
     $("#trailPage").html(html);
-   
-   
 
     $.getJSON(url, function (states) {
         var option = '';
@@ -115,7 +106,7 @@ var map;
 var markers = [];
 function initialize() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: -34.397, lng: 150.644 },
+        center: { lat: 37.774, lng: -122.419 },
         zoom: 8
     });
 }
