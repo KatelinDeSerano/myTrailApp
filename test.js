@@ -1,6 +1,6 @@
 // get data for drowdown menus from Battuta API
 var countryCode = "us";
-var BATTUTA_KEY = "20d543e656b7fe6818101f7fefa26d66";
+var BATTUTA_KEY = "c0d8fe3d683adb01ee5b7d32a56ab767";
 url = "https://battuta.medunes.net/api/region/" + countryCode + "/all/?key=" + BATTUTA_KEY + "&callback=?";
 
 function startPage() {
@@ -35,7 +35,7 @@ function getStateCityData() {
                 <a class="navbar-brand" href="#">TrailFix</a>
             </div>
             <p class="navbar-text">Select a City and a State: </p>
-            <form class="navbar-form navbar-left">
+           
                 <select id="items" >
                     <option>Choose a State</option>
                 </select>  
@@ -51,7 +51,7 @@ function getStateCityData() {
           
     $("#trailPage").html(html);
 
-    $.getJSON(url, function (states) {
+    $.getJSON(url, function(states) {
         var option = '';
         for (var i = 0; i < states.length; i++) {
             option += '<option value="' + states[i].region + '">' + states[i].region + '</option>';
@@ -106,7 +106,7 @@ var map;
 var markers = [];
 function initialize() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 37.774, lng: -122.419 },
+        center: { lat: -34.397, lng: 150.644  },
         zoom: 8
     });
 }
@@ -137,7 +137,6 @@ function displayTrailSearchData(data) {
     var infowindow = new google.maps.InfoWindow();
     var marker, i;
 }
-
 
 startPage();
 handleStartButton();
