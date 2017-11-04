@@ -2,7 +2,6 @@
 var countryCode = "us";
 var BATTUTA_KEY = "c0d8fe3d683adb01ee5b7d32a56ab767";
 
-
 function startPage() {
     let html = `
             <div id="startPage">
@@ -34,17 +33,16 @@ function getStateCityData() {
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">TrailFix</a>
             </div>
-            <p class="navbar-text">Select a City and a State: </p>
-           
+            </div>
+            </nav>
+            <p>Select a City and a State: </p>
                 <select id="items" >
                     <option>Choose a State</option>
                 </select>  
                 <select id="cities">
                     <option>Choose a City</option>
                 </select>
-            </form>
-            </div>
-            `
+            </form>`
           
     $("#trailPage").html(html);
 
@@ -99,7 +97,14 @@ function getDataFromTrails(latitude, longitude, callback) {
     $.ajax(settings);
     // if results are null or failure,  do some code to render an error screen
 
-    let html = ` 
+    let html = `
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+     <div class="navbar-header">
+         <a class="navbar-brand" href="#">TrailFix</a>
+     </div>
+     </div>
+     </nav> 
     <form id ="backButton">
          <button class="btn btn-sm btn-success" type="submit">GO BACK <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
     </form>
