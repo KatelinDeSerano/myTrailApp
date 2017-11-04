@@ -27,7 +27,7 @@ function handleStartButton() {
 
 // Get data from Battuta API for State and Cities
 function getStateCityData() {
-    //openNav();
+    
     let html = `
            <nav class="navbar navbar-inverse navbar-fixed-top">
            <div class="container-fluid">
