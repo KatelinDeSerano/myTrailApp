@@ -1,10 +1,10 @@
 // get data for drowdown menus from Battuta API
 var countryCode = "us";
 var BATTUTA_KEY = "c0d8fe3d683adb01ee5b7d32a56ab767";
-url = "https://battuta.medunes.net/api/region/" + countryCode + "/all/?key=" + BATTUTA_KEY + "&callback=?";
+
 
 function startPage() {
-	let html = `
+    let html = `
             <div id="startPage">
             <div class="textbox container-fluid">
                 <h2>GET YOUR FIX. DISCOVER ADVENTURE.<h2>
@@ -15,19 +15,19 @@ function startPage() {
             </div>
                 </div>`
 
-	$("#trailPage").html(html);
+    $("#trailPage").html(html);
 }
 
 function handleStartButton() {
-	$("#trailPage").on("submit", "#startButton", function(e) {
-	 	e.preventDefault();
-	 	getStateCityData();
-	});
+    $("#trailPage").on("submit", "#startButton", function(e) {
+        e.preventDefault();
+        getStateCityData();
+    });
 }
 
 // Get data from Battuta API for State and Cities
 function getStateCityData() {
-    
+    url = "https://battuta.medunes.net/api/region/" + countryCode + "/all/?key=" + BATTUTA_KEY + "&callback=?";
     let html = `
            <nav class="navbar navbar-inverse navbar-fixed-top">
            <div class="container-fluid">
@@ -44,14 +44,12 @@ function getStateCityData() {
                 </select>
             </form>
             </div>
-            <div id="map" class="col-md-12"></div>
-                <script 
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5BRSSgrgK8EJ8998mi5CclUx2vjH7Tc0&callback=initialize">
-                </script>`
+            `
           
     $("#trailPage").html(html);
 
     $.getJSON(url, function(states) {
+        
         var option = '';
         for (var i = 0; i < states.length; i++) {
             option += '<option value="' + states[i].region + '">' + states[i].region + '</option>';
@@ -100,6 +98,19 @@ function getDataFromTrails(latitude, longitude, callback) {
     };
     $.ajax(settings);
     // if results are null or failure,  do some code to render an error screen
+
+    let html = ` 
+    <form id ="backButton">
+         <button class="btn btn-sm btn-success" type="submit">GO BACK <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+    </form>
+    <div id="map" class="col-md-12"></div>
+    <script 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5BRSSgrgK8EJ8998mi5CclUx2vjH7Tc0&callback=initialize">
+    </script>
+
+    `
+    $("#trailPage").html(html);
+
 }
 // Initialize map
 var map;
@@ -138,5 +149,13 @@ function displayTrailSearchData(data) {
     var marker, i;
 }
 
+function handleBackButton() {
+    $("#trailPage").on("submit", "#backButton", function(e) {
+        e.preventDefault();
+        getStateCityData();
+    });
+}
+
 startPage();
 handleStartButton();
+handleBackButton();
