@@ -1,4 +1,14 @@
-#startPage {
+.textbox h1 {
+    font-family: 'Francois One', sans-serif;
+    font-size: 50px; 
+}
+
+.textbox h3 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 40px;
+}
+
+.startPage {
     height: 100vh;
     width: 100vw;
     background: url("images/hikingshoes.jpg") no-repeat center fixed;
@@ -14,18 +24,6 @@
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-    
-}
-
-
-.textbox h2 {
-    font-family: 'Francois One', sans-serif;
-    font-size: 50px; 
-}
-
-.textbox h3 {
-    font-family: 'Amatic SC', cursive;
-    font-size: 40px;
 }
 
 .button {
@@ -37,12 +35,11 @@
     width: 100%;
     font-size: 24px;
     -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    
+    transition-duration: 0.4s; 
 }
 
 .button:hover {
-   font-size: 150%;
+   font-size: 185%;
 }
 
 .navbar-brand {
@@ -59,25 +56,52 @@
     margin-right: -50%;
     transform: translate(-50%, -50%);
 }
-
-
-#items{
-    display: inline-block;
-    margin-top: 10px;
-    margin-left: 3rem;
-    margin-right: 15px; 
-    width: 18rem;
+.searchPage {
+ 
+    height: 100vh;
+    width: 100vw;
+    background: url("images/forest-park-portland-oregon.jpg") no-repeat center fixed;
+    background-size: cover;
+    color: white;
+    
+}
+.search {
+    padding: 3rem;
+    border: 3px solid white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-align: center
 }
 
-#cities {
-    display: inline-block;
-    margin-top: 10px;
-    margin-left: 3rem;
-    margin-right: 15px;
+#items{
+    display: block;
+    margin: auto;
+    margin-top: 30px;
     width: 18rem;
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 2px;
     
 }
 
+#cities {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    width: 18rem;
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 2px;
+  
+}
+
+.search h1 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 50px;
+}
 
 
 
