@@ -1,3 +1,22 @@
+.startPage {
+    background: url("images/hikingshoes.jpg") no-repeat center fixed;
+    background-size: cover; 
+    color: white;
+    height: 100vh;
+    width: 100vw;
+}
+
+.textbox {
+    
+    border: 3px solid white;
+    left: 50%;
+    margin-right: -50%;
+    padding: 3rem;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .textbox h1 {
     font-family: 'Francois One', sans-serif;
     font-size: 50px; 
@@ -6,24 +25,6 @@
 .textbox h3 {
     font-family: 'Amatic SC', cursive;
     font-size: 40px;
-}
-
-.startPage {
-    height: 100vh;
-    width: 100vw;
-    background: url("images/hikingshoes.jpg") no-repeat center fixed;
-    background-size: cover; 
-    color: white;
-}
-
-.textbox {
-    padding: 3rem;
-    border: 3px solid white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
 }
 
 .button {
@@ -39,28 +40,74 @@
     transition-duration: 0.4s; 
 }
 
-.backButton {
-    display: inline-block;
-    background-color: transparent; 
-    border: 2px solid white;
-    color: white; 
-    text-align: center;
-    font-size: 18px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
+.button:hover {
+    font-size: 185%;
+ }
+
+.searchPage {
+    background: url("images/forest-park-portland-oregon.jpg") no-repeat center fixed;
+    background-size: cover;
+    color: white;
+    height: 100vh;
+    width: 100vw;
 }
 
-.button:hover {
-   font-size: 185%;
+.search {
+    border: 3px solid white;
+    left: 50%;
+    margin-right: -50%;
+    padding: 3rem;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.search h1 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 50px;
+}
+
+#items{
+    background-color: transparent;
+    border: 1px solid white;
+    display: block;
+    height: 40px;
+    margin: auto;
+    margin-top: 30px;
+    padding: 2px;
+    width: 18rem;
+}
+
+#cities {
+    background-color: transparent;
+    border: 1px solid white;
+    display: block;
+    height: 40px;
+    margin: auto;
+    margin-top: 10px;
+    padding: 2px;
+    width: 18rem;
+}
+
+.backButton {
+    background-color: transparent; 
+    border: 2px solid white;
+    color: white;
+    display: inline-block;
+    font-size: 18px;
+    text-align: center;
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s; /* Safari */
+}
+
+.backButton:hover {
+    background-color: white;
+    color: black;
 }
 
 .navbar-brand {
     font-size: 18px;
-}
-
-.backButton:hover {
-    color: black;
-    background-color: white;
 }
 
 .navbar-text {
@@ -68,63 +115,22 @@
 }
 
 #map {
-    position: absolute;
     height: 100%;
-    width:100%;
-    padding: 3rem;
+    left: 50%;
+    margin-right: -50%;
     margin-top: 30rem;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-}
-.searchPage {
- 
-    height: 100vh;
-    width: 100vw;
-    background: url("images/forest-park-portland-oregon.jpg") no-repeat center fixed;
-    background-size: cover;
-    color: white;
-    
-}
-.search {
     padding: 3rem;
-    border: 3px solid white;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
     transform: translate(-50%, -50%);
-    text-align: center
+    width:100%;
 }
 
-#items{
-    display: block;
-    margin: auto;
-    margin-top: 30px;
-    width: 18rem;
-    background-color: transparent;
-    border: 1px solid white;
-    padding: 2px;
-    height: 40px;
     
-}
 
-#cities {
-    display: block;
-    margin: auto;
-    margin-top: 10px;
-    width: 18rem;
-    background-color: transparent;
-    border: 1px solid white;
-    padding: 2px;
-    height: 40px;
-  
-}
 
-.search h1 {
-    font-family: 'Amatic SC', cursive;
-    font-size: 50px;
-}
+
+
+
 
 
 
