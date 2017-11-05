@@ -27,15 +27,27 @@
 }
 
 .button {
+    border-style: none;
     background-color: transparent; 
-    border: none;
     padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
     color: white; 
     text-align: center;
-    width: 100%;
     font-size: 24px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s; 
+}
+
+.backButton {
+    display: inline-block;
+    background-color: transparent; 
+    border: 2px solid white;
+    color: white; 
+    text-align: center;
+    font-size: 18px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
 }
 
 .button:hover {
@@ -46,10 +58,19 @@
     font-size: 18px;
 }
 
+.backButton:hover {
+    color: black;
+    background-color: white;
+}
+
+.navbar-text {
+    color: white;
+}
+
 #map {
     position: absolute;
-    height: 50rem;
-    width: 80rem;
+    height: 100%;
+    width:100%;
     padding: 3rem;
     margin-top: 30rem;
     left: 50%;
@@ -84,6 +105,7 @@
     background-color: transparent;
     border: 1px solid white;
     padding: 2px;
+    height: 40px;
     
 }
 
@@ -95,6 +117,7 @@
     background-color: transparent;
     border: 1px solid white;
     padding: 2px;
+    height: 40px;
   
 }
 

@@ -33,7 +33,7 @@ function getStateCityData() {
             <nav class="navbar navbar-inverse navbar-fixed-top">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">TrailFix</a>
+                        <h4 class="navbar-text">TrailFix</h4>
                     </div>
                 </div>
             </nav>
@@ -93,7 +93,7 @@ function getDataFromTrails(latitude, longitude, callback) {
             lat: latitude,
             lon: longitude,
             radius: 100,
-            limit: 2,
+            limit: 10,
         },
         dataType: 'json',
         type: 'GET',
@@ -105,9 +105,9 @@ function getDataFromTrails(latitude, longitude, callback) {
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">TrailFix</a>
-                <form id ="backButton">
-                    <button class="btn btn-sm btn-success" type="submit">GO BACK <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+            <h4 class="navbar-text">TrailFix</h4>
+                <form class="navbar-form navbar-right" id ="backButton">
+                    <button class="backButton" type="submit">New Search</button>
                 </form>
              </div>
          </div>
@@ -143,7 +143,7 @@ function displayTrailSearchData(data) {
         });
         markers.push(marker);
         bounds.extend(position);
-        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+        google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
             return function () {
                 infowindow.setContent('<h4>' + arr[i].name + '</h4><p>' + arr[i].directions+ '</p>');
                 infowindow.open(map, marker);
