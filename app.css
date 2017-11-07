@@ -1,24 +1,23 @@
-#startPage {
-    height: 100vh;
-    width: 100vw;
+.startPage {
     background: url("images/hikingshoes.jpg") no-repeat center fixed;
     background-size: cover; 
     color: white;
+    height: 100vh;
+    width: 100vw;
 }
 
 .textbox {
-    padding: 3rem;
+    
     border: 3px solid white;
-    position: absolute;
-    top: 50%;
     left: 50%;
     margin-right: -50%;
+    padding: 3rem;
+    position: absolute;
+    top: 50%;
     transform: translate(-50%, -50%);
-    
 }
 
-
-.textbox h2 {
+.textbox h1 {
     font-family: 'Francois One', sans-serif;
     font-size: 50px; 
 }
@@ -29,54 +28,108 @@
 }
 
 .button {
+    border-style: none;
     background-color: transparent; 
-    border: none;
     padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
     color: white; 
     text-align: center;
-    width: 100%;
     font-size: 24px;
     -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    
+    transition-duration: 0.4s; 
 }
 
 .button:hover {
-   font-size: 150%;
+    font-size: 185%;
+ }
+
+.searchPage {
+    background: url("images/forest-park-portland-oregon.jpg") no-repeat center fixed;
+    background-size: cover;
+    color: white;
+    height: 100vh;
+    width: 100vw;
+}
+
+.search {
+    border: 3px solid white;
+    left: 50%;
+    margin-right: -50%;
+    padding: 3rem;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.search h1 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 50px;
+}
+
+#items{
+    background-color: transparent;
+    border: 1px solid white;
+    display: block;
+    height: 40px;
+    margin: auto;
+    margin-top: 30px;
+    padding: 2px;
+    width: 18rem;
+}
+
+#cities {
+    background-color: transparent;
+    border: 1px solid white;
+    display: block;
+    height: 40px;
+    margin: auto;
+    margin-top: 10px;
+    padding: 2px;
+    width: 18rem;
+}
+
+.backButton {
+    background-color: transparent; 
+    border: 2px solid white;
+    color: white;
+    display: inline-block;
+    font-size: 18px;
+    text-align: center;
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s; /* Safari */
+}
+
+.backButton:hover {
+    background-color: white;
+    color: black;
 }
 
 .navbar-brand {
     font-size: 18px;
 }
 
+.navbar-text {
+    color: white;
+}
+
 #map {
-    position: absolute;
-    height: 50rem;
-    width: 80rem;
-    padding: 3rem;
-    margin-top: 30rem;
+    height: 100%;
     left: 50%;
     margin-right: -50%;
+    margin-top: 30rem;
+    padding: 3rem;
+    position: absolute;
     transform: translate(-50%, -50%);
+    width:100%;
 }
 
-
-#items{
-    display: inline-block;
-    margin-top: 10px;
-    margin-left: 3rem;
-    margin-right: 15px; 
-    width: 18rem;
-}
-
-#cities {
-    display: inline-block;
-    margin-top: 10px;
-    margin-left: 3rem;
-    margin-right: 15px;
-    width: 18rem;
     
-}
+
+
+
+
 
 
 
