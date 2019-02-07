@@ -87,7 +87,7 @@ function getDataFromTrails(latitude, longitude, callback) {
     const settings = {
         url: 'https://trailapi-trailapi.p.mashape.com/',
         headers: {
-            "X-Mashape-Key": 'Jiv2iCwuWKmshf598IFTnsJC7Va7p15GAbhjsnMVlaeqLJbqru'
+            "X-Mashape-Key": 'iyDyJdYKg2mshSk2SnqdpH0e9swAp1fYGHvjsn7UtygqsIi9Fv'
         },
         data: {
             lat: latitude,
